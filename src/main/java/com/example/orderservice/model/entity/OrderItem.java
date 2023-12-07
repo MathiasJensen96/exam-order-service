@@ -17,6 +17,7 @@ import java.util.List;
 @Table(name = "order_item")
 public class OrderItem {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
     @Column(name = "menuItemId")
