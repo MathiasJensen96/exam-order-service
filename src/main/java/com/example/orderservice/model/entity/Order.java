@@ -19,6 +19,7 @@ import java.util.List;
 @Table(name = "order")
 public class Order {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "customerId")
     private int customerId;
