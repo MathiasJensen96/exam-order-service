@@ -6,6 +6,7 @@ target/
 
 .jpb
 .env
+flyway.*
 
 ### STS ###
 .apt_generated
