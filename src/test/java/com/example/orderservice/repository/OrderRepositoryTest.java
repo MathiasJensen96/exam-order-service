@@ -14,7 +14,7 @@ class OrderRepositoryTest {
     private OrderRepository orderRepository;
 
     @Test
-    void test() {
+    void init() {
 
     }
 }
