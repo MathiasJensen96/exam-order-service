@@ -50,7 +50,7 @@ class OrderServiceTest {
     }
 
     @Test
-    void saveOrder() {
+    void given_newOrder_whenSaved_returnOrderDtoWithId() {
         // Arrange
         NewOrderDTO newOrderDTO = new NewOrderDTO(
                 1,
