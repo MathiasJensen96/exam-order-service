@@ -16,9 +16,10 @@ import java.util.List;
 @Setter
 @Builder
 @Entity
-@Table(name = "order")
+@Table(name = "`order`")
 public class Order {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "customerId")
     private int customerId;
@@ -30,6 +31,7 @@ public class Order {
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @Builder.Default
     private List<OrderItem> items = new ArrayList<>();
     @Column(name = "orderPrice")
     private double orderPrice;
@@ -56,5 +58,10 @@ public class Order {
             item.setOrder(order);
         }
         return order;
+    }
+
+    public void addItem(OrderItem item) {
+        items.add(item);
+        item.setOrder(this);
     }
 }

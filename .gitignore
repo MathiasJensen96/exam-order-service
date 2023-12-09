@@ -4,6 +4,10 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+.jpb
+.env
+flyway.*
+
 ### STS ###
 .apt_generated
 .classpath
