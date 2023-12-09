@@ -130,4 +130,47 @@ class OrderRepositoryTest {
         assertFalse(orderRepository.findById(order1.getId()).isPresent());
         assertEquals(1, orderRepository.count());
     }
+
+    @Test
+    void givenExistingOrders_whenDeleteAll_thenAllOrdersAreDeleted() {
+        // Arrange
+        assertEquals(2, orderRepository.count());
+
+        // Act
+        orderRepository.deleteAll();
+
+        // Assert
+        assertEquals(0, orderRepository.count());
+    }
+
+    @Test
+    void givenExistingOrdersAndNewOrder_whenSave_thenOrderIsSaved() {
+        // Arrange
+        assertEquals(2, orderRepository.count());
+
+        Order order = Order.builder()
+                .customerId(3)
+                .restaurantId(3)
+                .createdAt(Timestamp.from(Instant.now()))
+                .items(new ArrayList<>())
+                .status(OrderStatus.IN_PROGRESS)
+                .withDelivery(true)
+                .courierId(3)
+                .build();
+
+        // Act
+        Order savedOrder = orderRepository.save(order);
+
+        // Assert
+        assertNotNull(savedOrder);
+        assertNotNull(savedOrder.getId());
+        assertEquals(3, orderRepository.count());
+        assertEquals(order.getCustomerId(), savedOrder.getCustomerId());
+        assertEquals(order.getRestaurantId(), savedOrder.getRestaurantId());
+        assertEquals(order.getCreatedAt(), savedOrder.getCreatedAt());
+        assertEquals(order.getItems().size(), savedOrder.getItems().size());
+        assertEquals(order.getStatus(), savedOrder.getStatus());
+        assertEquals(order.isWithDelivery(), savedOrder.isWithDelivery());
+        assertEquals(order.getCourierId(), savedOrder.getCourierId());
+    }
 }
