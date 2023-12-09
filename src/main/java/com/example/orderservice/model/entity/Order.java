@@ -31,6 +31,7 @@ public class Order {
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @Builder.Default
     private List<OrderItem> items = new ArrayList<>();
     @Column(name = "orderPrice")
     private double orderPrice;
