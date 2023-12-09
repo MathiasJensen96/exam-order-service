@@ -16,7 +16,7 @@ import java.util.List;
 @Setter
 @Builder
 @Entity
-@Table(name = "order")
+@Table(name = "`order`")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -57,5 +57,10 @@ public class Order {
             item.setOrder(order);
         }
         return order;
+    }
+
+    public void addItem(OrderItem item) {
+        items.add(item);
+        item.setOrder(this);
     }
 }

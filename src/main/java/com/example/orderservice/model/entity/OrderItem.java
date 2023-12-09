@@ -31,11 +31,13 @@ public class OrderItem {
     @ManyToOne
     @JoinColumn(name = "order_id")
     private Order order;
+
     public OrderItem(String name, double price, int amount) {
         this.name = name;
         this.price = price;
         this.amount = amount;
     }
+
     public OrderItem(String name, double price, int amount, Order order) {
         this.order = order;
         this.name = name;
