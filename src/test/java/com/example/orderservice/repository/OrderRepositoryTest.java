@@ -53,21 +53,21 @@ class OrderRepositoryTest {
                 .menuItemId(1)
                 .name("name1")
                 .price(1)
-                .amount(1)
+                .quantity(1)
                 .build();
 
         orderItem2 = OrderItem.builder()
                 .menuItemId(2)
                 .name("name2")
                 .price(2)
-                .amount(2)
+                .quantity(2)
                 .build();
 
         orderItem3 = OrderItem.builder()
                 .menuItemId(3)
                 .name("name3")
                 .price(3)
-                .amount(3)
+                .quantity(3)
                 .build();
 
         order1.addItem(orderItem1);

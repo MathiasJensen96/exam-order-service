@@ -16,21 +16,22 @@ public class OrderItemDTO {
     private int menuItemId;
     private String name;
     private double price;
-    private int amount;
+    private int quantity;
     private int orderId;
 
-    public OrderItemDTO(String name, double price, int amount) {
+    public OrderItemDTO(String name, double price, int quantity) {
         this.name = name;
         this.price = price;
-        this.amount = amount;
+        this.quantity = quantity;
     }
 
-    public OrderItemDTO(int id, String name, double price, int amount) {
+    public OrderItemDTO(int id, String name, double price, int quantity) {
         this.id = id;
         this.name = name;
         this.price = price;
-        this.amount = amount;
+        this.quantity = quantity;
     }
+
     public static List<OrderItemDTO> fromList(List<OrderItem> items) {
         List<OrderItemDTO> orderItems = new ArrayList<>();
         for (OrderItem item : items
@@ -38,7 +39,7 @@ public class OrderItemDTO {
             orderItems.add(new OrderItemDTO(item.getId(),
                     item.getMenuItemId(),
                     item.getName(), item.getPrice(),
-                    item.getAmount(), item.getOrder().getId()));
+                    item.getQuantity(), item.getOrder().getId()));
         }
         return orderItems;
     }
@@ -49,7 +50,7 @@ public class OrderItemDTO {
         ) {
             OrderItemDTO dto = new OrderItemDTO();
             dto.setMenuItemId(item.getMenuItemId());
-            dto.setAmount(item.getQuantity());
+            dto.setQuantity(item.getQuantity());
             orderItems.add(dto);
         }
         return orderItems;

@@ -26,30 +26,30 @@ public class OrderItem {
     private String name;
     @Column(name = "price")
     private double price;
-    @Column(name = "amount")
-    private int amount;
+    @Column(name = "quantity")
+    private int quantity;
     @ManyToOne
     @JoinColumn(name = "order_id")
     private Order order;
 
-    public OrderItem(String name, double price, int amount) {
+    public OrderItem(String name, double price, int quantity) {
         this.name = name;
         this.price = price;
-        this.amount = amount;
+        this.quantity = quantity;
     }
 
-    public OrderItem(String name, double price, int amount, Order order) {
+    public OrderItem(String name, double price, int quantity, Order order) {
         this.order = order;
         this.name = name;
         this.price = price;
-        this.amount = amount;
+        this.quantity = quantity;
     }
 
     public static List<OrderItem> fromList(List<OrderItemDTO> items) {
         List<OrderItem> orderItems = new ArrayList<>();
         for (OrderItemDTO item : items
         ) {
-            OrderItem orderItem = new OrderItem(item.getName(), item.getPrice(), item.getAmount());
+            OrderItem orderItem = new OrderItem(item.getName(), item.getPrice(), item.getQuantity());
             orderItem.setMenuItemId(item.getMenuItemId());
             orderItems.add(orderItem);
         }

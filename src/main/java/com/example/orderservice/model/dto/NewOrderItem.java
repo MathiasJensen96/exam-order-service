@@ -18,12 +18,12 @@ public class NewOrderItem {
 
     public NewOrderItem(OrderItemDTO item) {
         this.menuItemId = item.getMenuItemId();
-        this.quantity = item.getAmount();
+        this.quantity = item.getQuantity();
     }
 
     public static List<NewOrderItem> fromItemDTOList(List<OrderItemDTO> items) {
         List<NewOrderItem> list = new ArrayList<>();
-        for (OrderItemDTO item: items
+        for (OrderItemDTO item : items
         ) {
             list.add(new NewOrderItem(item));
         }
