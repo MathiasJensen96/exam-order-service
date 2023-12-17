@@ -9,7 +9,7 @@ on:
 
 jobs:
   test:
-    uses: KD131/cicd-integration-test-demo/.github/workflows/test_postgres.yml@main
+    uses: KD131/cicd-integration-test-demo/.github/workflows/test_mysql.yml@main
     secrets: inherit
 
   deploy:
